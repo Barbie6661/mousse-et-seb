@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include <nero.h>
+#include "neuro.h"
 
 int main ()
 {
-return 0;
+  return 0;
 }
