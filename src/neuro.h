@@ -18,5 +18,4 @@ struct neuro *init();
 void get_values_learn(struct neuro *neuro,double arg1,double arg2,double arg3);
 
 void calc_neuro(struct neuro *n);
-
 void call_train(struct neuro *n);
