@@ -1,4 +1,4 @@
-## Simple SDL mini code
+## MAKEFILE OF THE PROJECT
  
 CC=gcc
  
@@ -6,18 +6,18 @@ CPPFLAGS=  -MMD
 CFLAGS= -Wall -Wextra -g -std=c99 -O3
 LDFLAGS=
 LDLIBS= 
- 
-OBJ= neuro.o main.o
-DEP= ${SRC:.o=.d}
+
+SRC = neuro.c main.c
+
+OBJ= ${SRC:.c=.o}
  
 all: main
  
 main: ${OBJ}
  
 clean:
-		${RM} ${OBJ} ${DEP} *~
-		${RM} main
- 
+		rm -f *.o *.d *~
+		rm -f main 
 -include ${DEP}
  
 # END
