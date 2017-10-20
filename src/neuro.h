@@ -6,11 +6,17 @@ struct neuro {
   struct neuro *e1;
   struct neuro *e2;
   struct neuro *e3;
-  float *p;
-  float *l1;
-  float *l2;
-  float *l3;
+  double p;
+  double l1;
+  double l2;
+  double l3;
 };
 
 
-struct neuro *init_neuro();
+struct neuro *init();
+
+void get_values_learn(struct neuro *neuro,double arg1,double arg2,double arg3);
+
+void calc_neuro(struct neuro *n);
+
+void call_train(struct neuro *n);
