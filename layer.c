@@ -47,7 +47,7 @@ struct enter *init_enter_list(int nenters);
 struct layer *init_layer_list(int nbenters);
 struct exit *init_exit_list(int nbenters);
 struct neuro *init_neuro_list(int nbexits);
-
+void *set_link_value(struct link *link1);
 
 
 
@@ -138,3 +138,23 @@ struct neuro *init_neuro_list(int nbexits){
 	return neuro;
 }
 
+void *set_link_value(struct link *link1){
+	FILE* text = NULL;
+	text = fopen("value.txt", "w");
+	if(text != NULL)
+	{
+		struct link *tmp = link1;
+		fputc('[', text); 
+		while( tmp != NULL)
+		{
+			char doubl = (char)(tmp -> value);
+			char fputs(doubl, text);
+			tmp = tmp -> next;	
+		}
+		fclose(text);
+	}
+	else
+	{
+		printf("Impossible d'ouvrir le fichier");
+	}
+}
