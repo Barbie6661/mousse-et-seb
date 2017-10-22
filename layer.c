@@ -134,46 +134,6 @@ struct neuro *init_neuro_list(int nbexits){
 }
 
 
-void calc_neuro(struct layer *layer)
-{
-  struct layer *tmp_layer = layer -> next;
- 
-  while (layer->next != NULL)
-  {
-    struct neuro *tmp_neuro = tmp_layer->next->neuro;
-    while (tmp_neuro->next != NULL)
-    {
-      struct link *tmp_link = tmp_neuro->next->link;
-      double somme = 0;
-      while (tmp_link->next != NULL)
-      {
-	somme+=tmp_link->next->value;
-	tmp_link = tmp_link->next;
-      }
-      tmp_neuro->weight = 1/(1+exp(-somme));
-    }
-    tmp_neuro = tmp_neuro->next;
-  }
-  tmp_layer = tmp_layer->next;
-}
-
-void calc_enter(struct enter *enter)
-{
- struct layer *tmp_layer = enter -> layer ;
- double somme = 0;
- while(tmp_layer -> next != NULL)
- {
-  	struct enter *tmp_enter = enter;
-	while(tmp_enter -> next != NULL)
-	{
-		somme+=tmp_enter -> next -> value;
-		tmp_enter = tmp_enter -> next;
-	}
-	somme += tmp_enter -> value;
- }
-
-
-}
 
 void *set_link_value(struct link *link1){
 	FILE* text = NULL;
