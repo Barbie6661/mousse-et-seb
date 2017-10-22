@@ -153,6 +153,7 @@ void *set_link_value(struct link *link1){
 		{
 			char doubl = (char)(tmp -> value);
 			fputs(&doubl, text);
+			fputc(',', text);
 			tmp = tmp -> next;	
 		}
 		fclose(text);
@@ -160,5 +161,30 @@ void *set_link_value(struct link *link1){
 	else
 	{
 		printf("Impossible d'ouvrir le fichier");
+	}
+}
+
+void *get_link_value(struct link *link1){
+	FILE* text = NULL;
+	text = fopen("value.txt", "r");
+	if(text != NULL)
+	{
+		struct link *tmp = link1;
+		char res;
+		double doubleres;
+		while(tmp != NULL)
+		{
+			res = getc(text);
+			while(res == '[' || res == ','){
+				res = getc(text);
+			}
+			doubleres = (double)res;
+			tmp -> value = doubleres;
+			tmp = tmp -> next;
+
+		}
+	}
+	else{
+		printf("Impossible d'ouvrir le fichier txt");
 	}
 }
